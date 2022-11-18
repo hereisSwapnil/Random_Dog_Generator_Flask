@@ -4,6 +4,14 @@ import json
 
 app = Flask(__name__, template_folder='static')
 
+def total_dogs_generated():
+    with open('db.json') as json_file:
+        data = json.load(json_file)
+    sum = 0
+    for i in data:
+        sum = sum + i[1]
+    return sum
+
 def gene_sort(e):
   return e[1]
 
@@ -73,13 +81,15 @@ def home():
     add_login(NAME)
     link = get_dog_img_link(True)
     data = get_user(NAME)
-    return render_template("home.html", dog_img_link = link, name = data[0], dogs_generated = data[1], no_of_logins = data[2], data = get_data())
+    return render_template("home.html", dog_img_link = link, name = data[0], dogs_generated = data[1], no_of_logins = data[2], data = get_data(), total_dogs_generated = total_dogs_generated())
 
 @app.route('/get_dog')
 def get_dog():
     global NAME
+    total_dogs = total_dogs_generated()
+    get_d = get_data()
     link = get_dog_img_link(False)
     data = get_user(NAME)
-    return render_template("home.html", dog_img_link = link, name = data[0], dogs_generated = data[1], no_of_logins = data[2], data = get_data())
+    return render_template("home.html", dog_img_link = link, name = data[0], dogs_generated = data[1], no_of_logins = data[2], data = get_d, total_dogs_generated = total_dogs)
 
 app.run()
