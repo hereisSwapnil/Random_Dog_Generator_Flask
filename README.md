@@ -3,8 +3,9 @@ Flask App that generates random dog images with a Username Login System using JS
 
 ## Screenshots
 
-
-[![image.png](https://i.postimg.cc/Gm25tNzK/image.png)](https://postimg.cc/7fFVQKFJ)
+<p>
+    <img src="https://i.postimg.cc/Gm25tNzK/image.png"/>
+</p>
 
 
 ## Installation
